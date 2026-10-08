@@ -1,0 +1,5 @@
+const toggle=document.querySelector('.nav-toggle'),nav=document.querySelector('.navlinks');if(toggle&&nav){toggle.addEventListener('click',()=>{const open=nav.classList.toggle('open');toggle.setAttribute('aria-expanded',String(open));toggle.textContent=open?'×':'☰'});nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');toggle.setAttribute('aria-expanded','false');toggle.textContent='☰'}))}
+const items=document.querySelectorAll('.reveal');if('IntersectionObserver'in window&&!window.matchMedia('(prefers-reduced-motion: reduce)').matches){const ob=new IntersectionObserver((entries,observer)=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}}),{threshold:.12});items.forEach(i=>ob.observe(i))}else items.forEach(i=>i.classList.add('visible'));
+document.querySelector('#year').textContent=new Date().getFullYear();
+// Formspree endpoint is configured in index.html. This sends submissions directly to Formspree.
+const form=document.querySelector('#contactForm');
